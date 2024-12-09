@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wordle PWA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="6board.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- <pre id="output"></pre> -->
+  <div id="game">
+    <div class="header">
+      <button id="reset-btn">Play Again</button>
+
+
+
+
+      <h1 style="font-size: 1.5em; margin:0;">Wordle</h1>
+      <button id="show-stats-btn" onclick="toggleStats()">Show Stats</button>
+      <!-- <button id="clearStats" onclick="clearStatsData()">Clear Stats</button> -->
+    </div>
+
+    <div id="gameAttemps">
+      <p id="attempts" style="display: none;"></p>
+      <p id="attemptsLeft" style="display: none;"></p>
+
+    </div>
+
+    <div id="overall">
+      <label>
+        <input type="radio" name="gameLetterMode" value="5" title="5 letters">
+        5 Letters
+    </label>
+    <br>
+    <label>
+        <input type="radio" name="gameLetterMode" value="6" checked title="6 letters">
+        6 letters
+    </label>
+    <!-- <br>
+    <label>
+        <input type="radio" name="options" value="option3">
+        Option 3
+    </label> -->
+      <img src="icons8-stack-of-coins-94.png" alt="Streak">
+      <p id="overallScore"></p>
+    </div>
+       <p id="currentScore" style="display: none;"></p>
+
+    <div id="gameProgress">
+      <div>
+        <img src="currentstreak.svg" alt="Streak">
+        <p id="currentStreak"></p>
+      </div>
+      <div>
+        <img src="highstreak.svg" alt="Highest Streak">
+        <p id="highestStreak"></p>
+      </div>
+      <div>
+
+        <img src="trophy.svg" alt="Score">
+        <p id="highestScore"></p>
+      </div>
+    </div>
+
+
+      <!-- <p id="lastAttempt"></p>
+      <p id="lastAttemptColor"></p>
+      <p id="lastAttemptWord"></p>
+      <p id="lastAttemptWordColor"></p>
+      <p id="lastAttemptLetter"></p>
+      <p id="lastAttemptLetterColor"></p>
+      <p id="lastAttemptDescription"></p>
+      <p id="lastAttemptDescriptionColor"></p>
+      <p id="lastAttemptFeedback"></p>
+      <p id="lastAttemptFeedbackColor"></p>
+      <p id="lastAttemptFeedbackWord"></p> 
+            <p id="remainingLetters"></p>
+      <p id="guessedLetters"></p>-->
+
+    <!-- Add this input field for mobile use -->
+    <!-- <input id="mobile-input" /> -->
+    <div id="board"></div>
+  <!-- Six letter board -->
+    <div id="sixboard"></div>
+    <div id="daily-chart-wrapper" style="display:none;">
+      <div id="daily-chart-container" >
+        <canvas id="dailyChart"></canvas>
+      </div>
+    </div>
+    <div id="monthly-chart-wrapper" style="display:none;">
+      <div id="monthly-chart-container" >
+        <canvas id="monthlyChart"></canvas>
+        </div>
+    </div>
+    <div id="overall-chart-wrapper" style="display:none;">
+      <div id="overall-chart-container" >
+      <canvas id="overallChart"></canvas>
+      </div>
+    </div>
+    <div id="keyboard"></div>
+    <!-- <div id="log"></div> -->
+   <div id="log" style="display:none;"></div>
+    <h3 id="answer"></h3>
+
+    <!-- <div id="display-result"></div> -->
+
+    <canvas id="confetti-canvas" style="display:none;"></canvas>
+    
+
+  </div>
+  <!-- <input type="text" id="mobile-input" style="opacity: 0; position: absolute; top: -9999px;"> -->
+<div id="wordDescription"></div>
+
+  <script src="chart.min.js"></script>
+  <script src="chartjs-plugin-datalabels.min.js"></script>
+  <script src="confetti.browser.js"></script>
+  
+  <!-- supporting game scripts -->
+  <script src="dbInit.js"></script>
+  <script src="showGraphs.js"></script>
+  <script src="handleInput.js"></script>
+  <script src="wordDescription.js"></script>
+  <script src="buttonFunctions.js"></script>
+  <script src="fiveBoard.js"></script>
+  <script src="sixBoard.js"></script>
+  <script src="gameStats.js"></script>
+  <script src="gameScoringSystem.js"></script>
+  <script src="confetti-code.js"></script>
+  
+  <!-- Main Game Logic-->
+  <script src="script.js"></script>
+
+
+</body>
+</html>

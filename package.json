@@ -1,0 +1,12 @@
+{
+  "name": "wordle-pwa",
+  "version": "1.0.0",
+  "description": "A Progressive Web App for Wordle that works on desktop and mobile.",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server",
+    "dev": "live-server"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
