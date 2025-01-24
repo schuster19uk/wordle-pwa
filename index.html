@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wordle PWA</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="6board.css">
+  <link rel="stylesheet" href="./stylesheets/style.css">
+  <link rel="stylesheet" href="./stylesheets/6board.css">
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -43,23 +43,23 @@
         <input type="radio" name="options" value="option3">
         Option 3
     </label> -->
-      <img src="icons8-stack-of-coins-94.png" alt="Streak">
+      <img src="./images/icons8-stack-of-coins-94.png" alt="Streak">
       <p id="overallScore"></p>
     </div>
        <p id="currentScore" style="display: none;"></p>
 
     <div id="gameProgress">
       <div>
-        <img src="currentstreak.svg" alt="Streak">
+        <img src="./images/currentstreak.svg" alt="Streak">
         <p id="currentStreak"></p>
       </div>
       <div>
-        <img src="highstreak.svg" alt="Highest Streak">
+        <img src="./images/highstreak.svg" alt="Highest Streak">
         <p id="highestStreak"></p>
       </div>
       <div>
 
-        <img src="trophy.svg" alt="Score">
+        <img src="./images/trophy.svg" alt="Score">
         <p id="highestScore"></p>
       </div>
     </div>
@@ -113,24 +113,26 @@
   <!-- <input type="text" id="mobile-input" style="opacity: 0; position: absolute; top: -9999px;"> -->
 <div id="wordDescription"></div>
 
-  <script src="chart.min.js"></script>
-  <script src="chartjs-plugin-datalabels.min.js"></script>
-  <script src="confetti.browser.js"></script>
+  <script src="./dependencies/chart.min.js"></script>
+  <script src="./dependencies/chartjs-plugin-datalabels.min.js"></script>
+  <script src="./dependencies/confetti.browser.js"></script>
+  <script src="./dependencies/confetti-code.js"></script>
   
   <!-- supporting game scripts -->
-  <script src="dbInit.js"></script>
-  <script src="showGraphs.js"></script>
-  <script src="handleInput.js"></script>
-  <script src="wordDescription.js"></script>
-  <script src="buttonFunctions.js"></script>
-  <script src="fiveBoard.js"></script>
-  <script src="sixBoard.js"></script>
-  <script src="gameStats.js"></script>
-  <script src="gameScoringSystem.js"></script>
-  <script src="confetti-code.js"></script>
+  <script src="./script/dbInit.js"></script>
+  <script src="./script/showGraphs.js"></script>
+  <script src="./script/handleInput.js"></script>
+  <script src="./script/wordDescription.js"></script>
+  <script src="./script/buttonFunctions.js"></script>
+  <script src="./script/fiveBoard.js"></script>
+  <script src="./script/sixBoard.js"></script>
+  <script src="./script/gameStats.js"></script>
+  <script src="./script/gameScoringSystem.js"></script>
+  <script src="./script/buildDictionaries.js"></script>
+
   
   <!-- Main Game Logic-->
-  <script src="script.js"></script>
+  <script src="./script/script.js"></script>
 
 
 </body>

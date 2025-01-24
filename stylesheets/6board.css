@@ -1,0 +1,23 @@
+/* Game Board */
+#sixboard {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0px;
+    justify-content: center;
+    margin: 4px auto;
+  }
+  
+  .tile6 {
+    width: 55px; /* Adjust size as needed */
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px; /* Adjust font size for visibility */
+    font-weight: bold;
+    border: 2px solid grey;
+    margin: 5px;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 4px;
+  }

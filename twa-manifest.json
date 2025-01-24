@@ -13,7 +13,7 @@
   "backgroundColor": "#FFFFFF",
   "enableNotifications": true,
   "startUrl": "file:///android_asset/index.html",  
-  "iconUrl": "file:///android_asset/icon-512.png",  
+  "iconUrl": "file:///android_asset/images/icon-512.png",  
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
     "path": "D:\\VSProjects\\wordle-pwa\\android.keystore",

@@ -1,0 +1,379 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #383838;
+    touch-action: manipulation; /* Prevent double-tap zooming */
+    user-select: none; /* Prevent text selection */
+  }
+
+  #mobile-input {
+    position: absolute;
+    top: -9999px; /* Keep it hidden but functional */
+    opacity: 0;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between; /* Distributes the buttons on either side of the heading */
+    align-items: center; /* Vertically aligns the buttons and heading */
+    width: 100%; /* Ensures it takes up the full width */
+  }
+  
+  h1 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #d1c4c4;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  #game {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #383838;
+  }
+
+  #overall {
+    display: flex;
+    flex-direction: row; /* Arrange the icon and text horizontally */
+    align-items: center; /* Align icon and text vertically */
+    justify-content: flex-end; /* Align to the right side of its container */
+    gap: 10px; /* Space between the icon and text */
+    margin-top:5px;
+    /* right: 10px; 
+    top: 20px; */
+  }
+  
+  #overall img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  #overall p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    color: whitesmoke;
+  }
+
+
+
+  #gameProgress {
+    display: flex;
+    justify-content: space-around; /* Distribute columns evenly */
+    align-items: center; /* Center items vertically */
+    padding: 10px;
+    max-width: 600px; /* Optional: Set a max width */
+    margin: 10px auto; /* Center the container */
+  }
+  
+  #gameProgress > div {
+    display: flex;
+    flex-direction: row; /* Arrange icon and text horizontally */
+    align-items: center; /* Align icon and text vertically */
+    gap: 10px; /* Space between icon and text */
+  }
+  
+  #gameProgress p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: whitesmoke;
+    text-align: center; /* Align numbers to the center */
+    min-width: 30px; /* Ensure consistent space for numbers */
+  }
+  
+  #gameProgress img {
+    display: block;
+    width: 50px;
+    height: 50px;
+  }
+
+
+  /* #gameProgress {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
+    padding: 20px; 
+  }
+  
+  #gameProgress p {
+    margin: 0;
+    padding: 5px;
+    background-color: #eaeaea; 
+    border-radius: 4px; 
+    text-align: center;
+  } */
+  
+  /* Game Board */
+  #board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0px;
+    justify-content: center;
+    margin: 4px auto;
+  }
+  
+  .tile {
+    width: 55px; /* Adjust size as needed */
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px; /* Adjust font size for visibility */
+    font-weight: bold;
+    border: 2px solid grey;
+    margin: 5px;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 4px;
+  }
+
+
+  /* Keyboard */
+  /* #keyboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 5px;
+    margin-top: 20px;
+  }
+  
+  #keyboard button {
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    background-color: #ddd;
+    color: #333;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  #keyboard button:active {
+    background-color: #bbb;
+  }
+  
+  #keyboard button:hover {
+    cursor: pointer;
+  } */
+
+
+/* Keyboard Container */
+#keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 400px;
+}
+
+/* Keyboard Rows */
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* General Button Styles */
+#keyboard button {
+  padding: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: #595858;
+  color: #E0E0E0;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  text-align: center;
+  /* transition: background-color 0.2s, transform 0.1s; */
+  flex: 1; /* Ensures all buttons in the row take the same width */
+  max-width: 48px; /* Limits button size */
+  min-width: 32px; /* Ensures a uniform minimum width */
+}
+
+/* Special Key Styles (Backspace and Enter) */
+#keyboard button.special-key {
+  flex: 1.5; /* Makes Backspace and Enter larger */
+  max-width: 92px; /* Adjust size to visually differentiate */
+  background-color: #d9d3d3;
+  color: black;
+}
+
+/* Button Hover and Active States */
+#keyboard button:active {
+  background-color: #555;
+  transform: scale(0.95);
+}
+/* 
+#keyboard button:hover {
+  background-color: #444;
+  cursor: pointer;
+} */
+
+  #daily-chart-wrapper , #monthly-chart-wrapper , #overall-chart-wrapper {
+    display: flex;
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;      /* Centers vertically */
+    height: 30%;            /* Takes full height of the viewport */
+  }
+
+  #monthly-chart-wrapper , #overall-chart-wrapper {
+    border-top: dashed 1px;
+    border-color: whitesmoke;
+  }
+
+  #daily-chart-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  #monthly-chart-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  #overall-chart-container {
+    width: 300px;
+    height: 300px;
+  }
+  
+  /* Responsive for smaller screens */
+  @media (max-width: 600px) {
+    .tile {
+      font-size: 2.5rem;
+    }
+
+    #daily-chart-wrapper , #monthly-chart-wrapper , #overall-chart-wrapper {
+      display: flex;
+      justify-content: center;  /* Centers horizontally */
+      align-items: center;      /* Centers vertically */
+      height: 30vh;            /* Takes full height of the viewport */
+    }
+  
+    #keyboard button {
+      font-size: 1.4rem;
+      padding: 4px;
+      max-height: 32px;
+    }
+
+    #keyboard button.backspace {
+      padding:0px;
+    }
+
+    #daily-chart-container {
+      width: 200px;
+      height: 200px;
+    }
+
+    #monthly-chart-container {
+      width: 200px;
+      height: 200px;
+    }
+  
+    #overall-chart-container {
+      width: 200px;
+      height: 200px;
+    }
+
+    #gameProgress {
+      justify-content: space-between; /* Tighter spacing on smaller screens */
+      padding: 5px;
+    }
+  
+    #gameProgress img {
+      width: 40px;
+      height: 40px; /* Reduce icon size */
+    }
+  
+    #gameProgress p {
+      font-size: 24px; /* Slightly smaller font on mobile */
+    }
+  }
+
+
+
+  /* Button Styling */
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 25px; /* Rounded corners */
+  /* transition: all 0.3s ease;  */
+  background: linear-gradient(145deg, #6e7f5f, #8fa98e); /* Cool gradient background */
+  color: white;
+  font-weight: bold;
+  /* box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); */
+}
+
+#wordDescription h3 {
+ margin:0;
+}
+
+#keyboard button {
+  background: #838383;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Play Again button specific */
+#reset-btn {
+  background: linear-gradient(145deg, #ff7e5f, #feb47b); /* Gradient for "Play Again" */
+}
+
+/* #reset-btn:hover {
+  background: linear-gradient(145deg, #feb47b, #ff7e5f); 
+  transform: translateY(-2px); 
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
+} */
+
+#wordDescription , #answer {
+  color:white;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#wordDescription p {
+ text-align: left;
+}
+
+#gameStats {
+  color:white;
+}
+
+/* Show Stats button specific */
+#show-stats-btn {
+  background: linear-gradient(145deg, #4e8c4a, #76b476); /* Gradient for "Show Stats" */
+}
+
+/* #show-stats-btn:hover {
+  background: linear-gradient(145deg, #76b476, #4e8c4a); /* Reverse the gradient on hover 
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
+} */
+
+/* Button focus effect */
+/* button:focus {
+  outline: none; // Removes default focus outline 
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); // Add custom focus outline 
+} */
+
+
+.key.green {
+  background-color: green;
+  color: white;
+}
+
+.key.yellow {
+  background-color: gold;
+  color: black;
+}
+
+.key.gray {
+  background-color: gray;
+  color: white;
+}
