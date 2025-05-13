@@ -129,6 +129,7 @@ function handle5Enter() {
         gameCorrect = true;
 
         let dictionaryAPIUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" + targetWord.toLowerCase();
+        console.log("five letter url 1: " + dictionaryAPIUrl)
         getDictionaryXHR(dictionaryAPIUrl).then((data) => { 
         if(data) {
           //console.log('Dictionary Data is: ' + data);
@@ -176,6 +177,7 @@ function handle5Enter() {
       // answer.textContent = `Game over! The word was ${targetWord.toUpperCase()}.`;
 
       let dictionaryAPIUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" + targetWord.toLowerCase();
+      console.log("five letter url 2: " + dictionaryAPIUrl)
       getDictionaryXHR(dictionaryAPIUrl).then((data) => { 
       if(data) {
         //console.log('Dictionary Data is: ' + data);
@@ -203,7 +205,7 @@ function handle5Enter() {
   else {
     alert("Please enter a 5-letter word.");
   }
-  updateProgress();
+  updateProgress(gameLetterMode);
 }
 }
 

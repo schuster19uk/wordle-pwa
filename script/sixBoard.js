@@ -37,9 +37,10 @@ function handle6Enter() {
             tiles6[startIndex6 + i].style.backgroundColor = "green";
           }
 
-          gameCorrect = true;
+          gameSixLetterCorrect = true;
 
           let dictionaryAPIUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" + target6Word.toLowerCase();
+          console.log("six letter url 1: " + dictionaryAPIUrl)
           getDictionaryXHR(dictionaryAPIUrl).then((data) => { 
           if(data) {
             //console.log('Dictionary Data is: ' + data);
@@ -48,7 +49,7 @@ function handle6Enter() {
           } else {
             const wordInfoDiv2 = document.getElementById('wordDescription');
             wordInfoDiv2.innerHTML = '';
-            XHRWiki(); 
+            XHR6LetterWiki(); 
           }
           }).catch((error) => { 
             console.error("Failed to fetch dictionary data:", error.message);
@@ -79,7 +80,7 @@ function handle6Enter() {
 
       if (attempts6 >= maxAttempts) {
 
-        gameCorrect = false;
+        gameSixLetterCorrect = false;
         setMarked6LetterWord();
         
         // const answer = document.getElementById("answer");
@@ -87,6 +88,7 @@ function handle6Enter() {
         // answer.textContent = `Game over! The word was ${targetWord.toUpperCase()}.`;
 
         let dictionaryAPIUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" + target6Word.toLowerCase();
+        console.log("six letter url 2: " + dictionaryAPIUrl)
         getDictionaryXHR(dictionaryAPIUrl).then((data) => { 
         if(data) {
           //console.log('Dictionary Data is: ' + data);
@@ -114,7 +116,7 @@ function handle6Enter() {
     else {
       alert("Please enter a 6-letter word.");
     }
-    updateProgress();
+    updateProgress(gameLetterMode);
   }
 }
 

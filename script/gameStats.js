@@ -79,10 +79,10 @@
       return new Promise((resolve, reject) => {
         const transaction = db.transaction(scoreSixLetterStore, "readwrite");
         const store = transaction.objectStore(scoreSixLetterStore);
-  
+        console.log("Game score result added" + scoreSixLetter);
         const gameScoreSixLetterResult = {
           date: new Date().toISOString().split("T")[0], // Save the date in YYYY-MM-DD format
-          score: score, // 'W' for win, 'F' for fail
+          score: scoreSixLetter, // 'W' for win, 'F' for fail
         };
   
         const request = store.add(gameScoreSixLetterResult);
@@ -157,8 +157,8 @@
       return new Promise((resolve, reject) => {
   
         const db = event.target.result;
-        const transaction = db.transaction(globalGameStore, "readwrite");
-        const store = transaction.objectStore(globalGameStore);
+        const transaction = db.transaction(globalGameSixLetterStore, "readwrite");
+        const store = transaction.objectStore(globalGameSixLetterStore);
   
           // Retrieve the existing record
           const getRequest = store.get(1);
@@ -171,18 +171,19 @@
   
                   if (addCurrentStreakOnly) {
                     // Update current streak only
-                    data.currentStreak = currentStreak;
+                    data.currentStreak = currentSixLetterStreak;
                     store.put(data);
                     console.log("Current streak updated:", data);
                   }
   
                   else {
+                    console.log("highest scores six letters" + highestSixLetterStreak , currentSixLetterStreak , scoreSixLetter);
                   // Update values
-                  data.highestStreak = Math.max(data.highestStreak, highestStreak);
-                  data.currentStreak = currentStreak;
-                  data.highestScore = Math.max(data.highestScore, score);
-                  data.currentScore = score ? score : 0;
-                  data.overallScore += score;
+                  data.highestStreak = Math.max(data.highestStreak, highestSixLetterStreak);
+                  data.currentStreak = currentSixLetterStreak;
+                  data.highestScore = Math.max(data.highestScore, scoreSixLetter); 
+                  data.currentScore = scoreSixLetter ? scoreSixLetter : 0;
+                  data.overallScore += scoreSixLetter;
   
                   // Save updated data
                   store.put(data);
@@ -387,13 +388,17 @@
   }
   
 
-  function getGlobalValues(callback) {
+  function getGlobalValues(callback , glm) {
+    //console.log("getting global values for letter mode" + glm);
     const request = indexedDB.open(dbName);
   
     request.onsuccess = function (event) {
+
+        const storeName = gameLetterMode === 5 ? globalGameStore : globalGameSixLetterStore;
+
         const db = event.target.result;
-        const transaction = db.transaction(globalGameStore, "readonly");
-        const store = transaction.objectStore(globalGameStore);
+        const transaction = db.transaction(storeName, "readonly");
+        const store = transaction.objectStore(storeName);
   
         const getRequest = store.get(1);
   

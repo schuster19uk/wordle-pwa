@@ -15,6 +15,7 @@
 // Function to handle keyboard input
 function handleKeyboardInput(event) {
     const key = event.key.toUpperCase();
+    console.log(key);
   
     if (/^[A-Z]$/.test(key)) {
         handleInput(key);
@@ -31,8 +32,8 @@ function handleKeyboardInput(event) {
   
   // Handle the actual input (used by both mobile and keyboard events)
   function handleInput(letter) {
-
-    if(gameLetterMode === 5) {
+console.log("game letter mode hanlde input is: " + typeof(gameLetterMode));
+    if(gameLetterMode === "5" || gameLetterMode === 5) {
         if(attempts < maxAttempts) {
             if (currentGuess.length < 5) {
                 currentGuess += letter;
@@ -40,7 +41,7 @@ function handleKeyboardInput(event) {
             }
         }
     } 
-    else if (gameLetterMode === 6) {
+    else if (gameLetterMode === "6" || gameLetterMode === 6) {
         if(attempts6 < maxAttempts) {
             if (current6Guess.length < 6) {
                 current6Guess += letter;
@@ -216,7 +217,12 @@ function handleRadioChange(event) {
     //set Game Mode value
     gameLetterMode = event.target.value;
     console.log("Game Mode is" + gameLetterMode);
-    changeGameMode();
+    if(wordleGameInProgress){
+      setGameLetterRadioButton(gameLetterMode);
+    }
+    else {
+      changeGameMode();
+    }
 }
 
 function changeGameMode() {
@@ -229,5 +235,17 @@ function changeGameMode() {
     console.error("Error changing game mode:", error);
     logToScreen(`Changing game mode failed: ${error.message}`);
   });
+}
+
+function setGameLetterRadioButton(gameLetterMode) {
+  // if(gameLetterMode === "5"){
+  //   gameLetterMode = gameLetterMode;
+  //   //change radio button to 6
+  //   document.querySelector('input[name="gameLetterMode"][value="5"]').checked = true;
+  // }else {
+  //   gameLetterMode = gameLetterMode;
+  //   d
+  //ocument.querySelector('input[name="gameLetterMode"][value="5"]').checked = true;
+  // }
 }
 

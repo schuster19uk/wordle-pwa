@@ -10,6 +10,7 @@ let attempts6 = 0;
 
 
 const maxAttempts = 6;
+let wordleGameInProgress = false;
 
 
 // scoring system variables
@@ -34,7 +35,7 @@ let currentSixLetterScore = 0;
 let scoreSixLetter = 0; // Total score for the game
 let gameSixLetterCorrect = false;
 let hintsUsedSixLetter = 0;
-let maxHintsSixLetter = 3; // max number of hints for five letter words
+let maxHintsSixLetter = 3; // max number of hints for six letter words
 
 
 // Check if the user is on a mobile device
@@ -98,7 +99,7 @@ function setLetterMode() {
           break;
       }
   }
-  console.log("game letter mode: " +  gameLetterMode);
+  //console.log("game letter mode: " +  gameLetterMode);
   return gameLetterMode;
 
 }
@@ -175,9 +176,13 @@ async function initializeGame(isChangeGameMode) {
   {
     create5Board(); // Recreate the game board (changing the game mode should not recreate just load)
   }
-  else if(gameLetterMode == 6) {
+  else if(gameLetterMode == 6) 
+  {
     create6Board(); // Recreate the game board (changing the game mode should not recreate just load)
   }
+
+  //changing the game mode should load the correct scores
+  populateGameScoresOnUI(gameLetterMode);
 
   createKeyboard(); // Recreate the keyboard
 
@@ -195,11 +200,12 @@ async function initializeGame(isChangeGameMode) {
   const radios = document.querySelectorAll('input[name="gameLetterMode"]');
   radios.forEach(radio => addChangeHandlerSafely(radio, handleRadioChange));
 
+  const checkedRadio = document.querySelector('input[name="gameLetterMode"]:checked');
   
   setSubmitButtonDisabled(false);
   setResetButtonDisabled(true);
 
-  updateProgress();
+  updateProgress(checkedRadio.value);
   // starts the timer
   startGame();
 
@@ -307,9 +313,18 @@ function createKeyboard() {
 }
 
 
-function updateProgress(){
+function populateGameScoresOnUI(gameLetterMode)
+{
+  currentSixLetterScore
+  currentSixLetterStreak
+  highestSixLetterScore
+  highestSixLetterStreak
+}
 
-  getGlobalValues((globalValues) => {
+function updateProgress(gameMode){
+let glm = gameMode;
+//console.log("letter mode" + glm);
+  getGlobalValues((globalValues , glm) => {
     if (globalValues) {
         // console.log("Highest Streak:", globalValues.highestStreak ? globalValues.highestStreak : 0);
         // console.log("Current Streak:", globalValues.currentStreak ? globalValues.currentStreak : 0);
@@ -355,8 +370,10 @@ function updateProgress(){
       const overallScoreElement1 = document.getElementById('overallScore');
       overallScoreElement1.textContent =  overallScore.toString();
     }
-  });
+  },glm);
 
+  // to do current attemps and attemptsLeft (Not used In UI)
+  // not worried as the logic in the engine is fine
   const currentAttempts = document.getElementById('attempts');
   currentAttempts.textContent = 'Attemps:' + attempts; 
 

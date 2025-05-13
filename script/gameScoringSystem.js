@@ -36,7 +36,7 @@ function calculateSixLetterScore() {
   console.log(wordLengthBonus + ' word length bonus points');
   
   // Calculate points deduction based on hints used
-  let hintsPenalty = calculateHintPenalty(hintsUsed);
+  let hintsPenalty = calculateHintPenalty(hintsUsedSixLetter);
   console.log(hintsPenalty + ' penalty points');
   
   // Calculate time bonus (shorter time = more points)
@@ -44,14 +44,14 @@ function calculateSixLetterScore() {
   console.log(timeBonus + " time bonus points");
   
   // Calculate streak bonus
-  let streakBonus = calculateStreakBonus(currentStreak);
+  let streakBonus = calculateStreakBonus(currentSixLetterStreak);
   console.log(streakBonus + " streak bonus points");
   
   // Final score calculation
-  score = basePoints + wordLengthBonus - hintsPenalty + timeBonus + streakBonus;
+  scoreSixLetter = basePoints + wordLengthBonus - hintsPenalty + timeBonus + streakBonus;
 
-  console.log(`Score Six letter: ${score}`);
-  return score;
+  console.log(`Score Six letter: ${scoreSixLetter}`);
+  return scoreSixLetter;
 }
 
 // Function to calculate base points based on attempts
@@ -87,12 +87,17 @@ function calculateHintPenalty(hintsUsed) {
 }
 
 function startGame() {
+    wordleGameInProgress = true;
+    console.log("Starting game" + wordleGameInProgress );
+
     startTime = new Date(); // Get the current date and time (in milliseconds)
    // console.log("Game Started at:", startTime);
   }
   
   // Function to end the game (this is where you set the end time)
   function endGame(gameLetterMode) {
+    wordleGameInProgress = false;
+    console.log("Game Ended at:" + wordleGameInProgress);
     endTime = new Date(); // Get the current date and time when game ends
     timeTaken = Math.floor((endTime - startTime) / 1000); // Time taken in seconds
     console.log("Game Ended at:", endTime);
@@ -112,7 +117,7 @@ function startGame() {
 
     console.log(` Game Mode: ${gameLetterMode} Score: ${gameScore}`);
   
-    if(gameCorrect) {
+    if(gameCorrect || gameSixLetterCorrect) {
   
       const answerElement = document.getElementById('answer');
       answerElement.textContent = "Congratulations! You guessed the word! Your Score was:" + gameScore.toString() ;
