@@ -92,12 +92,11 @@ function startGame() {
 
     startTime = new Date(); // Get the current date and time (in milliseconds)
    // console.log("Game Started at:", startTime);
-  }
+}
   
   // Function to end the game (this is where you set the end time)
   function endGame(gameLetterMode) {
     wordleGameInProgress = false;
-    console.log("Game Ended at:" + wordleGameInProgress);
     endTime = new Date(); // Get the current date and time when game ends
     timeTaken = Math.floor((endTime - startTime) / 1000); // Time taken in seconds
     console.log("Game Ended at:", endTime);

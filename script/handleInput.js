@@ -217,8 +217,20 @@ function handleRadioChange(event) {
     //set Game Mode value
     gameLetterMode = event.target.value;
     console.log("Game Mode is" + gameLetterMode);
-    if(wordleGameInProgress){
-      setGameLetterRadioButton(gameLetterMode);
+    //only disallow game change if game is actually in progress
+    if(wordleGameInProgress && (attempts > 0 || attempts6 > 0)){
+     
+      switch (gameLetterMode) {
+        case "6":
+          setGameLetterRadioButton(5);
+          break;
+        case "5":
+          setGameLetterRadioButton(6);
+          break;
+        default:
+          break;
+      }
+      alert("Not able to change mode while game is in progress"); 
     }
     else {
       changeGameMode();
@@ -226,7 +238,6 @@ function handleRadioChange(event) {
 }
 
 function changeGameMode() {
-
   initializeGame(true).then(() => {
     logToScreen("Changing game mode...Successfull");
     //console.log("Game reset successfully.");
@@ -238,14 +249,13 @@ function changeGameMode() {
 }
 
 function setGameLetterRadioButton(gameLetterMode) {
-  // if(gameLetterMode === "5"){
-  //   gameLetterMode = gameLetterMode;
-  //   //change radio button to 6
-  //   document.querySelector('input[name="gameLetterMode"][value="5"]').checked = true;
-  // }else {
-  //   gameLetterMode = gameLetterMode;
-  //   d
-  //ocument.querySelector('input[name="gameLetterMode"][value="5"]').checked = true;
-  // }
+  if(gameLetterMode === "5"){
+    gameLetterMode = gameLetterMode;
+    //change radio button to 6
+    document.querySelector('input[name="gameLetterMode"][value="5"]').checked = true;
+  }else {
+    gameLetterMode = gameLetterMode;
+    document.querySelector('input[name="gameLetterMode"][value="6"]').checked = true;
+  }
 }
 

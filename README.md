@@ -12,3 +12,7 @@ apksigner sign --ks D:\VSProjects\wordle-pwa\android.keystore --out d:\wordle.ap
 zipalign -c -v 4 d:\wordle.apk
 
 apksigner verify --verbose --print-certs d:\wordle.apk
+
+
+how to run the server/app locally
+http-server -p 8080
